@@ -1,21 +1,30 @@
+/**
+ * @package game
+ * @subpackage server
+ * @author Tyler Webb, Christopher Collins, Matthew Ayrton, Daniel Osornio
+ * @version 1.1.1
+/* ===============[ Dependencies  ]========================*/
 require("dotenv").config();
 var express = require("express");
-var exphbs = require("express-handlebars");
+var express_handlebars = require("express-handlebars");
 
 var db = require("./models");
 
+/* ===============[ Express Config ]=======================*/
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.static("public"));
+app.use(express.json()); 
+
+// Serve static content for the app from the "public" directory.
+app.use(express.static("public")); 
 
 // Handlebars
 app.engine(
   "handlebars",
-  exphbs({
+  express_handlebars({
     defaultLayout: "main"
   })
 );
