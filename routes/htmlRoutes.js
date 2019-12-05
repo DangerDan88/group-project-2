@@ -16,6 +16,13 @@ module.exports = function(app) {
     res.render("login", {msg: "Login"});
   });
 
+  // Choose Hero
+  app.get("/choose-hero/", function(req, res) {
+    db.Heroes.findAll({}).then(function(AllHeroes){
+      res.render("choose-hero", { msg: "Choose a hero", all_heroes: AllHeroes });
+    });
+  });
+
   // Load example page and pass in an example by id
   app.get("/hero/:id", function(req, res) {
     db.Heroes.findOne({ where: { id: req.params.id } }).then(function(dbHero) {
