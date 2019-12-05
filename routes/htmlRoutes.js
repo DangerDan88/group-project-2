@@ -23,6 +23,16 @@ module.exports = function(app) {
     });
   });
 
+  // Challenge
+  app.get("/challenge/", function(req, res) {
+    res.render("challenge", { msg: "Challenge a Player!" });
+  });
+
+  // Game Play
+  app.get("/play/", function(req, res) {
+    res.render("play", { msg: "Fight!" });
+  });
+
   // Load example page and pass in an example by id
   app.get("/hero/:id", function(req, res) {
     db.Heroes.findOne({ where: { id: req.params.id } }).then(function(dbHero) {
