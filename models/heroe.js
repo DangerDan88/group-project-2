@@ -3,10 +3,11 @@ module.exports = function(sequelize, DataTypes) {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     image_uris: DataTypes.TEXT,
-    type_line: DataTypes.TEXT, 
-    power: DataTypes.INTEGER,
-    toughness: DataTypes.INTEGER,
-    color: DataTypes.STRING,
+    class: DataTypes.TEXT, 
+    health: DataTypes.INTEGER,
+    attack: DataTypes.INTEGER,
+    defense: DataTypes.INTEGER,
+    experience: DataTypes.FLOAT,
     enabled: DataTypes.BOOLEAN
   });
 
