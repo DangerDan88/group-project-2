@@ -11,6 +11,11 @@ module.exports = function(app) {
     });
   });
 
+  // Login/Register
+  app.get("/login/", function(req, res) {
+    res.render("login", {msg: "Login"});
+  });
+
   // Load example page and pass in an example by id
   app.get("/hero/:id", function(req, res) {
     db.Heroes.findOne({ where: { id: req.params.id } }).then(function(dbHero) {
