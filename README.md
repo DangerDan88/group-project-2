@@ -1,6 +1,6 @@
 # Battle Heroes
 
-Multi player game to demonstrate MVC proof-of-concept using MySQL, Node, Express, Handlebars, and sequelize, sequelize-passport.
+Multi player game to demonstrate MVC proof-of-concept.
 
 ## Using Game 
 
