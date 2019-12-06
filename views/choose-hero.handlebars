@@ -9,17 +9,36 @@
     <div class="row" id="select-character">
 
       {{#each all_heroes}}
-       <div class="hero card text-center col-3 mx-auto" id="{{id}}" data-index="0" data-hp="{{health}}">
-        <div class="card-body">
-          <h6 class="card-title">{{name}}</h6><img class="card-img" alt="{{name}}" src="{{image_uris}}">
-          <p class="card-text">{{description}}</p>
-          <p class="card-text font-weight-bold"><span class="attack_power"></span>HP: <span class="health_points">{{health}}</span></p>
-        </div><!-- .card-body -->
+
+      <div class="flex flex-col max-w-xs rounded overflow-hidden shadow-lg m-1 items-center justify-between">
+        <img class="w-full" src="{{image_uris}}" alt="placeholder">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{class}}</div>
+          <p class="text-grey-darker text-base mb-2">
+            {{description}}
+            <ul>
+              <b>Health: {{health}}
+                <ul>
+                  Attack: {{attack}}
+                  <ul>
+                    Defense: {{defense}} </b>
+          </p>
+        </div>
+
+        <div class="m-2">
+          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" data-id="{{id}}">
+            Choose This Hero
+          </button>
+        </div>
+
       </div>
+
       {{/each}}
 
     </div>
+
   </div>
+
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

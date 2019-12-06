@@ -38,7 +38,7 @@ module.exports = function(app) {
   // Choose Hero
   app.get("/choose-hero/", isAuthenticated, function(req, res) {
     db.Heroes.findAll({}).then(function(AllHeroes){
-      res.render("choose-hero", { msg: "Choose a hero", all_heroes: AllHeroes });
+      res.render("choose-hero", { msg: "CHOOSE A HERO!", all_heroes: AllHeroes });
     });
   });
 
