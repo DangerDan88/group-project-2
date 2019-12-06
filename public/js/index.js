@@ -5,7 +5,7 @@ var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
-var API = {
+var API = { 
   saveExample: function(example) {
     return $.ajax({
       headers: {
