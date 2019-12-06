@@ -9,10 +9,10 @@ module.exports = {
     "dialect": "mysql"
   },
   "test": {
-    "username": process.env.USER,
-    "password": process.env.PASSWORD,
-    "database": process.env.DATABASE,
-    "host": process.env.HOST,
+    "username": process.env.MYSQL_USER,
+    "password": process.env.MYSQL_PASSWORD,
+    "database": process.env.MYSQL_DATABASE,
+    "host": process.env.MYSQL_HOST,
     "dialect": "mysql",
     "logging": false
   },

@@ -6,6 +6,9 @@
 /* ===============[ Dependencies  ]========================*/
 require("dotenv").config();
 var express = require("express");
+var session = require("express-session");
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
 var express_handlebars = require("express-handlebars");
 
 var db = require("./models");
@@ -15,11 +18,16 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); 
 
 // Serve static content for the app from the "public" directory.
 app.use(express.static("public")); 
+
+// We need to use sessions to keep track of our user's login status
+app.use(session({ secret: "showmethemoney", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Handlebars
 app.engine(
