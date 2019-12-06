@@ -7,7 +7,8 @@
     "start": "node server.js",
     "lint": "eslint --quiet .",
     "fix": "eslint --fix .",
-    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
+    "test": "npm run lint && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit",
+    "build:css": "tailwind build src/style.css -o public/styles/styles.css"
   },
   "license": "ISC",
   "dependencies": {
@@ -16,7 +17,8 @@
     "express-handlebars": "^3.1.0",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
-    "sequelize": "^5.21.2"
+    "sequelize": "^5.21.2",
+    "tailwindcss": "^1.1.4"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -27,5 +29,17 @@
     "eslint-plugin-prettier": "^3.1.0",
     "mocha": "^6.1.4",
     "prettier": "^1.17.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylerWebb92/group-project-2.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/TylerWebb92/group-project-2/issues"
+  },
+  "homepage": "https://github.com/TylerWebb92/group-project-2#readme"
 }
