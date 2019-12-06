@@ -1,5 +1,11 @@
 var db = require("../models");
 
+// Requiring path to so we can use relative routes to our HTML files
+var path = require("path");
+
+// Requiring our custom middleware for checking if a user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -12,8 +18,17 @@ module.exports = function(app) {
   });
 
   // Login/Register
-  app.get("/login/", function(req, res) {
+  app.get("/login", function(req, res) {
     res.render("login", {msg: "Login"});
+  });
+
+  app.get("/register", isAuthenticated, function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/choose-hero");
+    }
+    res.render("register", {msg: "Register"});
+    
   });
 
   // Choose Hero
@@ -24,12 +39,12 @@ module.exports = function(app) {
   });
 
   // Challenge
-  app.get("/challenge/", function(req, res) {
+  app.get("/challenge", function(req, res) {
     res.render("challenge", { msg: "Challenge a Player!" });
   });
 
   // Game Play
-  app.get("/play/", function(req, res) {
+  app.get("/play", function(req, res) {
     res.render("play", { msg: "Fight!" });
   });
 
