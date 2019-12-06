@@ -17,22 +17,26 @@ module.exports = function(app) {
     });
   });
 
-  // Login/Register
+  // Login
   app.get("/login", function(req, res) {
-    res.render("login", {msg: "Login"});
+    if (req.user) {
+      res.redirect("/choose-hero");
+    }
+    res.render("login", {msg: "Login Form"});
   });
 
-  app.get("/register", isAuthenticated, function(req, res) {
+  // Register
+  app.get("/register", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/choose-hero");
     }
-    res.render("register", {msg: "Register"});
+    res.render("register", {msg: "Sign Up Form"});
     
   });
 
   // Choose Hero
-  app.get("/choose-hero/", function(req, res) {
+  app.get("/choose-hero/", isAuthenticated, function(req, res) {
     db.Heroes.findAll({}).then(function(AllHeroes){
       res.render("choose-hero", { msg: "Choose a hero", all_heroes: AllHeroes });
     });

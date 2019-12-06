@@ -3,18 +3,25 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>Please login or register below:</h2>
+        <form class="signup">
+          <div class="form-group">
+            <label> Email:</label>
+            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email">
+          </div>
 
-        <form action="POST">
-          <label> Email:</label>
-          <input type="text" name="userName" id="emailInput">
+          <div class="form-group">
+            <label> Password:</label>
+            <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Password">
+          </div>
 
-          <label> Password:</label>
-          <input type="text" name="password" id="passwordInput">
+          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span> <span class="msg"></span>
+          </div>
 
-          <input type="submit" value="Submit">
+          <button type="submit" class="btn btn-default">Sign Up</button>
         </form>
-        <p>Or log in <a href="/login/">here</a></p>
+        <p>Or log in <a href="/login">here</a></p>
 
       </div>
     </div>
