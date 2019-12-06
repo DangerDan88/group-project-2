@@ -5,7 +5,7 @@ Multi player game to demonstrate MVC proof-of-concept using MySQL, Node, Express
 ## Using Game 
 
 ### Useful Links
-* Live Site: [https://limitless-sands-75979.herokuapp.com/](https://limitless-sands-75979.herokuapp.com/)
+* Live Site: [BattleHeroes.io](https://battleheroes.io/)
 
 ### Programs and Libraries Used
 * NPM Libraries: mysql, express, express-handlebars, dotenv, sequelize, sequelize-passport
