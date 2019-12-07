@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     // The email cannot be null, and must be a proper email before creation
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, 
       allowNull: false,
       unique: true,
       validate: {
@@ -34,11 +34,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models){
-    User.belongsToMany(models.Game_stats, {
+    User.belongsToMany(models.Game_log, {
       onDelete: "cascade",
-      through: 'Game_logs',
+      through: 'Game_stats',
       foreignKey: 'UserId',
-      as: 'players'
+      as: 'games'
     });
   };
 

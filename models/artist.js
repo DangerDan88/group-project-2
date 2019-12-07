@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   Artist.associate = function(models){
     Artist.belongsTo(models.User, { foreignKey: { allowNull: false }});
     Artist.hasMany(models.Heroes, { onDelete: "cascade" });
+    // Artist.hasMany(models.Heroes, { foreignKey: { allowNull: false }});
   };
 
   return Artist;
