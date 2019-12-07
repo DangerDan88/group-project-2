@@ -2,18 +2,23 @@
   <div class="container">
     <div class="row first-row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
+        <div class="flex flex-row justify-center text-base bg-gray-500 p-3 m-2 rounded">
+          <h1>{{msg}}</h1>
+        </div>
       </div>
     </div>
 
-    <div class="row" id="select-character">
+
+
+    <div class="row justify-center mx-auto" id="select-character">
 
       {{#each all_heroes}}
 
-      <div class="flex flex-col max-w-xs rounded overflow-hidden shadow-lg m-1 items-center justify-between">
+      <div
+        class="flex flex-col max-w-xs lg:mx-auto rounded overflow-hidden shadow-lg m-1 items-center justify-between bg-gray-500">
         <img class="w-full" src="{{image_uris}}" alt="placeholder">
         <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{{class}}</div>
+          <div class="font-bold text-xl mb-2"> <u>{{class}}</u> </div>
           <p class="text-grey-darker text-base mb-2">
             {{description}}
             <ul>
@@ -26,7 +31,7 @@
         </div>
 
         <div class="m-2">
-          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" data-id="{{id}}">
+          <button class="bg-teal-800 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded" data-id="{{id}}">
             Choose This Hero
           </button>
         </div>
