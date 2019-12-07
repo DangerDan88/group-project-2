@@ -8,7 +8,7 @@ var expect = chai.expect;
 chai.use(chaiHttp);
 
 var request;
-
+ 
 describe("GET /api/examples", function() {
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
