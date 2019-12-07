@@ -3,6 +3,7 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
+<<<<<<< HEAD
         <h2>This is our Home Page!</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
@@ -22,8 +23,13 @@
             <a href="example/{{this.id}}">{{this.text}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
+=======
+        <div class="row" id="select-character">
+          {{#each heroes}}
+            {{> heroes/heroes-thumb}}
+>>>>>>> 960cd80b51af5d19bd3bc68aa8ca6b5b4ae9d0d3
           {{/each}}
-        </ul>
+        </div>
       </div>
     </div>
   </div>

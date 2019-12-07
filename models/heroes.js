@@ -2,7 +2,7 @@ module.exports = function(sequelize, DataTypes) {
   var Heroes = sequelize.define("Heroes", {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    image_uris: DataTypes.TEXT,
+    image_url: DataTypes.TEXT,
     class: DataTypes.TEXT, 
     health: DataTypes.INTEGER,
     attack: DataTypes.INTEGER,
