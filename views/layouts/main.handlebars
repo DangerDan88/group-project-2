@@ -37,12 +37,13 @@
           <ul class="navbar-nav ml-auto">
             {{#if logged_in}}
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" href="/logout"><i class="fas fa-user-slash" title="Logout"></i></a>
+            </li>
+            {{else}}
+            <li class="nav-item">
+              <a class="nav-link" href="/register"><i class="fas fa-user" title="Register"></i></a>
             </li>
             {{/if}}
-            <li class="nav-item">
-              <a class="nav-link" href="/register"><i class="fas fa-user"></i></a>
-            </li>
           </ul><!-- .navbar-nav -->
         </div><!-- .navbar-collapse -->
 
