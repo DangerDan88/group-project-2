@@ -3,43 +3,18 @@
     <div class="row first-row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
+         
       </div>
     </div>
 
     <div class="row" id="select-character">
-
       {{#each all_heroes}}
-
-      <div class="flex flex-col max-w-xs rounded overflow-hidden shadow-lg m-1 items-center justify-between">
-        <img class="w-full" src="{{image_uris}}" alt="placeholder">
-        <div class="px-6 py-4">
-          <div class="font-bold text-xl mb-2">{{class}}</div>
-          <p class="text-grey-darker text-base mb-2">
-            {{description}}
-            <ul>
-              <b>Health: {{health}}
-                <ul>
-                  Attack: {{attack}}
-                  <ul>
-                    Defense: {{defense}} </b>
-          </p>
-        </div>
-
-        <div class="m-2">
-          <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" data-id="{{id}}">
-            Choose This Hero
-          </button>
-        </div>
-
-      </div>
-
+        {{> heroes/heroes-card}}
       {{/each}}
-
     </div>
-
+    
   </div>
-
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/choose.js"></script>
