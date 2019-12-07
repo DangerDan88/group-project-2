@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="img/icons8-rock-and-roll-hand-32.png" rel="shortcut icon">
   <meta name="description" content="Multi player game to demonstrate MVC proof-of-concept.">
-  <title>Battle Heroes</title>
+  <title>Battle Heroes | {{page_title}}</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900|Ubuntu" rel="stylesheet">
@@ -25,13 +25,13 @@
   {{/if}}
 </head>
 
-<body>
+<body class="bg-gray-800">
   <!-- Header -->
   <header id="main-header">
     <div class="container-fluid clearfix">
       <!-- Main Navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="main-nav">
-        <div class="navbar-brand mb-0 h1">Battle Heroes</div>
+        <div class="navbar-brand mb-0 h1">Battle Heroes | {{page_title}}</div>
 
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
@@ -49,6 +49,7 @@
 
       </nav><!-- #main-nav -->
     </div><!-- .container-fluid -->
+
   </header><!-- #main-header -->
 
   <!-- Main Container -->

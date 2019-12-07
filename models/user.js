@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     // The email cannot be null, and must be a proper email before creation
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, 
       allowNull: false,
       unique: true,
       validate: {
@@ -16,6 +16,11 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    user_groups: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      defaultValue: 'player'
     }
   });
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
@@ -27,5 +32,15 @@ module.exports = function(sequelize, DataTypes) {
   User.addHook("beforeCreate", function(user) {
     user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
   });
+
+  User.associate = function(models){
+    User.belongsToMany(models.Game_log, {
+      onDelete: "cascade",
+      through: 'Game_stats',
+      foreignKey: 'UserId',
+      as: 'games'
+    });
+  };
+
   return User;
 };
