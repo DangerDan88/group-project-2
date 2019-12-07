@@ -1,0 +1,577 @@
+/**
+ * MAIN CSS
+ * Author:  Christopher Collins
+ * Version: 2.0
+ * License: none (public domain)
+ */
+/*------------------------------------------------------
+>>> TABLE OF CONTENTS
+/*------------------------------------------------------
+0.0 THEME COLORS
+  0.1 Color Variables
+
+1.0 BASIC STYLES
+  1.1 Main Elements
+  1.2 Avatar
+  1.3 Buttons and Forms
+  1.4 Alerts
+
+2.0 PAGE NAVI
+  2.1 Main Nav
+  2.2 Hamburger Nav
+
+3.0 FOOTER
+  3.1 Footer Links and Credits
+
+4.0 MOBILE RESPONSIVE
+  4.1 @media only screen and (max-width: 980px)
+  4.2 @media only screen and (max-width: 768px)
+  4.3 @media only screen and (max-width: 640px)
+
+/*------------------------------------------------------*/
+/*--------------[ 0.0 THEME COLORS ]--------------------*/
+/*------------------------------------------------------*/
+/* 0.1 Color Variables
+/*------------------------------------------------------*/
+:root {
+  --accent-text: #00adb5;
+  --primary-menu-background: #2c2f33;
+  --secondary-menu-text: #23272a;
+  --secondary-menu-background: #99aab5;
+  --body-text: #F0F5F9;
+  --body-background: #23272a;
+  --button-text: #00adb5;
+  --button-background: #2c2f33;
+  --button-background2: #ffffff;
+  --cool-red: #E9290F;
+  --footer-hover-text: #00adb5;
+}
+
+.accent_text {
+  margin-top: 0.5em;
+  color: var(--accent-text);
+}
+
+/*------------------------------------------------------*/
+/*--------------[ 1.0 BASIC STYLES ]--------------------*/
+/*------------------------------------------------------*/
+/* 1.1 Main Elements
+/*------------------------------------------------------*/
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+}
+
+body.page-template {
+  font-family: "Ubuntu";
+  color: var(--body-text);
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-color: #efaf4f;
+}
+
+article#main-container {
+  margin-top: 0px; /* 40px; */ 
+}
+
+/** STICKY FOOTER
+* header 63px + margin 22px + footer 83px = 168px
+*/
+#main-container.content-wrapper {
+  min-height: calc(100vh - 186px);
+}
+
+section#main-section {
+  border-radius: 5px;
+  padding: 1em 0 0 0 !important;
+  margin-bottom: 0px;
+  border-color: var(--primary-menu-background);
+  box-shadow: 0px 12px 18px -6px var(--primary-menu-background);
+}
+
+.container-fluid {
+  padding: 0px 30px;
+}
+
+.row {
+  margin: 0 auto;
+  padding: 15px 0px;
+  margin-bottom: 0px;
+}
+
+.first-row {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+section.section-block {
+  margin: 0 auto;
+  max-width: 980px;
+  text-align: center;
+  /* color: var(--body-background); */
+  background-color: #fff;
+  /* rgba(0, 0, 0, 0.5); */
+}
+
+li {
+  list-style: none;
+}
+
+hr {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: solid 1px var(--primary-menu-background);
+}
+
+
+/* 1.2 Avatar
+/*------------------------------------------------------*/
+.avatar,
+.img-thumbnail.rounded-circle {
+  border-width: 5px;
+  border-color: #1E2022;
+  background-color: #1E2022;
+  box-shadow: 0px 12px 18px -6px #52616b;
+}
+
+#friend_image1,
+#friend_image2 {
+  width: 200px;
+  height: 200px;
+}
+
+/* 1.3 Buttons and Forms
+/*------------------------------------------------------*/
+.btn-primary {
+  margin-top: 0.7rem;
+  font-size: 1em;
+  color: #fff;
+  border-color: var(--button-background);
+  background-color: var(--button-background);
+}
+
+.btn-primary:hover {
+  border-color: var(--accent-text);
+  background-color: var(--accent-text);
+}
+
+.btn-secondary {
+  font-size: 1em;
+  margin-right: 10px;
+  color: var(--button-background2);
+  border-color: var(--button-text);
+  background-color: var(--button-text);
+}
+
+.btn-secondary:hover {
+  color: var(--button-text);
+  border-color: var(--accent-text);
+  background-color: var(--button-background2);
+  box-shadow: 3px 3px 5px 0px var(--accent-text);
+}
+
+#change_info,
+#friend_form > span,
+#friend_form > h2.accent_text {
+  display: none;
+}
+
+#update_info,
+#change_info {
+  margin-top: 1em;
+}
+
+/* 1.4 Alerts
+/*------------------------------------------------------*/
+.alert {
+  margin-bottom: 0px;
+}
+
+/*------------------------------------------------------*/
+/*--------------[ 2.0 PAGE NAVI ]-----------------------*/
+/*------------------------------------------------------*/
+/* 2.1 Main Nav
+/*------------------------------------------------------*/
+#main-header>.container-fluid {
+  background-color: transparent !important;
+}
+
+#main-nav,
+#mobile-nav {
+  max-width: 980px;
+  margin: 0 auto;
+  background-color: transparent !important;
+}
+
+#main-nav .navbar-nav .nav-link,
+#mobile-nav .navbar-nav .nav-link {
+  font-size: 1.3em;
+  color: rgba(255, 255, 255, .5);
+}
+
+#main-nav .nav-item:nth-child(2) {
+  border-left: solid 1px rgba(255, 255, 255, .5);
+  border-right: solid 1px rgba(255, 255, 255, .5);
+}
+
+/* Active Nav Link */
+#main-nav .navbar-nav .active>.nav-link,
+#main-nav .navbar-nav .nav-link.active,
+#main-nav .navbar-nav .nav-link.show,
+#main-nav .navbar-nav .show>.nav-link,
+#mobile-nav .navbar-nav .active>.nav-link,
+#mobile-nav .navbar-nav .nav-link.active,
+#mobile-nav .navbar-nav .nav-link.show,
+#mobile-nav .navbar-nav .show>.nav-link {
+  color: var(--accent-text);
+}
+
+/* Focused or Hover Nav Link */
+#main-nav .navbar-nav .nav-link:focus,
+#mobile-nav .navbar-nav .nav-link:focus,
+#main-nav .navbar-nav .nav-link:hover,
+#mobile-nav .navbar-nav .nav-link:hover {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Navbar Brand */
+.navbar-brand {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  padding: 1rem;
+  font-family: "Montserrat";
+  background-color: var(--button-background);
+}
+
+.navbar-dark .navbar-brand:focus,
+.navbar-dark .navbar-brand:hover {
+  color: var(--button-text);
+  -webkit-animation-name: navbar_brand_animation;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: navbar_brand_animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+/* Navbar Brand Animation */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes navbar_brand_animation {
+  from {
+    color: var(--accent-text);
+  }
+
+  to {
+    color: var(--footer-hover-text);
+  }
+}
+
+/* Standard syntax */
+@keyframes navbar_brand_animation {
+  from {
+    color: var(--accent-text);
+  }
+
+  to {
+    color: var(--footer-hover-text);
+  }
+}
+
+
+/* 2.2 Hamburger Nav
+/*------------------------------------------------------*/
+#mobile-nav {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+#mobile-nav .navbar {
+  background-color: var(--body-text) !important;
+}
+
+.navbar-toggler:not(.collapsed) {
+  border-color: rgba(255, 255, 255, .5);
+}
+
+/* Collapsible Navbar */
+#navbarToggleMenu {
+  z-index: 1;
+}
+
+#navbarToggleMenu .bg-dark {
+  background-color: rgba(0, 0, 0, 1) !important;
+}
+
+#navbarToggleMenu ul.navbar-nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+/*------------------------------------------------------*/
+/*--------------[ 3.0 FOOTER ]--------------------------*/
+/*------------------------------------------------------*/
+/* 3.1 Footer Links and Credits
+/*------------------------------------------------------*/
+#main-footer {
+  position: relative;
+  /* position: absolute; */
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  height: 83px;
+  /* bottom: 0px; */
+}
+
+/* Footer Links */
+#footer-nav {
+  position: absolute;
+  bottom: 33px;
+  width: 100%;
+  padding: 0 1rem;
+  background-color: var(--body-text) !important;
+}
+
+#footer-nav .navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+  flex-flow: row nowrap;
+}
+
+#footer-nav ul.navbar-nav {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+#footer-nav .nav-item {
+  margin: 0 0.5rem;
+}
+
+#footer-nav .nav-link {
+  color: var(--button-text);
+}
+
+.fa-linkedin:hover {
+  color: #0077B5;
+  -webkit-animation-name: lnkedin_animation;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: lnkedin_animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+/* LinkedIN Animation */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes lnkedin_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: #0077B5;
+  }
+}
+
+/* Standard syntax */
+@keyframes lnkedin_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: #0077B5;
+  }
+}
+
+.fa-dev:hover {
+  color: #000;
+  -webkit-animation-name: devio_animation;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: devio_animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+/* DevIO Animation */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes devio_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: #000;
+  }
+}
+
+/* Standard syntax */
+@keyframes devio_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: #000;
+  }
+}
+
+.fa-github:hover {
+  color: #959da5;
+  -webkit-animation-name: github_animation;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: github_animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+/* GitHub Animation */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes github_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: #959da5;
+  }
+}
+
+/* Standard syntax */
+@keyframes github_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: #959da5;
+  }
+}
+
+/* Footer Credits */
+#footer-bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  display: -ms-flexbox;
+  flex-flow: row nowrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: nowrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: center;
+  padding: 0.3rem 1rem;
+  background-color: #000;
+}
+
+#footer-info {
+  text-align: center;
+  color: var(--button-text);
+}
+
+.footer-link {
+  color: var(--button-text);
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: none;
+  color: var(--footer-hover-text);
+  -webkit-animation-name: footer_link_animation;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s;
+  /* Safari 4.0 - 8.0 */
+  animation-name: footer_link_animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+/* Footer Link Animation */
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes footer_link_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: var(--accent-text);
+  }
+}
+
+/* Standard syntax */
+@keyframes footer_link_animation {
+  from {
+    color: var(--footer-hover-text);
+  }
+
+  to {
+    color: var(--accent-text);
+  }
+}
+
+/*------------------------------------------------------*/
+/*--------------[ 4.0 MOBILE RESPONSIVE ]---------------*/
+/*------------------------------------------------------*/
+#mobile-nav {
+  display: none;
+}
+
+/* 4.1 @media only screen and (max-width: 980px)
+/*------------------------------------------------------*/
+@media only screen and (max-width: 980px) {
+  .page-template:not(#contact-page) .row {
+    padding: 15px 0 0 0;
+  }
+}
+
+/* 4.2 @media only screen and (max-width: 768px)
+/*------------------------------------------------------*/
+@media only screen and (max-width: 768px) {
+  #footer-nav .navbar-collapse {
+    justify-content: center;
+  }
+}
+
+/* 4.3 @media only screen and (max-width: 640px)
+/*------------------------------------------------------*/
+@media only screen and (max-width: 640px) {
+  #page-title {
+    margin: 0 auto;
+  }
+
+  .row>.container-fluid {
+    padding: 0px;
+  }
+}
