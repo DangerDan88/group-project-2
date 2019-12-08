@@ -194,62 +194,24 @@ module.exports = function(app) {
    *   PUT /api/gamelog/:id and update game_stats
    *   DELETE /api/gamelog/:id and auto delete game_stats 
    */
+   // Create a new game_log
+   app.post("/api/gamelog", function(req, res) {
+    db.Game_log.create(req.body).then(function(gameLogs) {
+      console.log(gameLogs.dataValues);
+
+      db.User.findAll({where: {id: gameLogs.dataValues.UserId}, include: ['games']})
+      .then((users) => {
+        console.log(users);
+        // For each user found set the sames gameLogs
+        users.forEach(user => {
+          user.setGames(gameLogs) // gameLogs is an array (one user hasMany gameLogs)
+          .then((joinedUsersgameLogs) => {
+            console.log(JSON.stringify(joinedUsersgameLogs));
+          })
+          .catch((err) => console.log("Error while joining Users and gameLogs : ", err))
+        }); 
+      })
+      .catch((err) => console.log("Error while Users search : ", err))
+    });
+  });
 };
-
-//==============[ DEBUGGING ]=====================================
- /*
- function Create_Game_log(){
-  db.Game_log.bulkCreate([
-    {
-      UserId: 1,
-      heroesId: 1,
-      current_hp: 23,
-      hero_exp: 0,
-      createdAt: db.sequelize.NOW, 
-      updatedAt: db.sequelize.NOW
-    }
-  ])
-  .then((gameLogs) => { 
-    gameLogs.forEach(game => {
-      console.log(game.dataValues);
-    });
-
-    db.User.findAll({where: {id: [1]}, include: ['games']})
-    .then((users) => {
-      // For user 1 set the sames gameLogs
-      users.forEach(user => {
-        user.setGames(gameLogs) // gameLogs is an array (one user hasMany gameLogs)
-        .then((joinedUsersgameLogs) => {
-          console.log(JSON.stringify(joinedUsersgameLogs))
-        })
-        .catch((err) => console.log("Error while joining Users and gameLogs : ", err))
-      });
-    })
-    .catch((err) => console.log("Error while Users search : ", err))
-  })
-  .catch((err) => {
-    console.log("Error while gameLogs creation: ", err)
-  });
-}
-
-
-  // Get all examples
-  app.get("/api/heroes", function(req, res) {
-    db.Heroes.findAll({}).then(function(dbHeroes) {
-      res.json(dbHeroes);
-    });
-  });
-  // Create a new example
-  app.post("/api/heroes", function(req, res) {
-    db.Heroes.create(req.body).then(function(dbHeroes) {
-      res.json(dbHeroes);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/heroes/:id", function(req, res) {
-    db.Heroes.destroy({ where: { id: req.params.id } }).then(function(dbHeroes) {
-      res.json(dbHeroes);
-    });
-  }); 
-  */
