@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Game_stats.associate = function(models){
     Game_stats.belongsTo(models.User, {foreignKey: 'UserId'})
-    Game_stats.belongsTo(models.Game_log, {foreignKey: 'Game_logId'})
+    Game_stats.belongsTo(models.Game_log, {foreignKey: 'Game_logId', onDelete: "cascade"})
   };
 
   return Game_stats;

@@ -30,7 +30,7 @@ function Create_Artist(){
 
     }else{
       console.log(record.dataValues);
-      Create_Heroes();
+      Create_Heroes(false);
     }
   })
   .catch((err) => {
@@ -44,7 +44,7 @@ function Create_Heroes(run=true){
     db.Heroes.bulkCreate([
       {name: "null", description: "Fighters share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat. They are well acquainted with death, both meting it out and staring it defiantly in the face.", image_url: "/img/heroes/placeholder-200x200.jpg", class: "Fighter", health: "30", attack: "10", defense: "15", experience: "0", enabled: 1, createdAt: db.sequelize.NOW, updatedAt: db.sequelize.NOW, ArtistId: "1"},
       {name: "null", description: "Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, brute-force mind control, and much more.", image_url: "/img/heroes/placeholder-200x200.jpg", class: "Wizard", health: "30", attack: "10", defense: "15", experience: "0", enabled: 1, createdAt: db.sequelize.NOW, updatedAt: db.sequelize.NOW, ArtistID: 1},
-      {name: "null", description: "Monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.", image_url: "/img/heroes/placeholder-200x200.jpg", class: "Monk", healht: "30", attack: "10", defense: "15", experience: "0", enabled: 1, createdAt: db.sequelize.NOW, updatedAt: db.sequelize.NOW, ArtistID: 1},
+      {name: "null", description: "Monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.", image_url: "/img/heroes/placeholder-200x200.jpg", class: "Monk", health: "30", attack: "10", defense: "15", experience: "0", enabled: 1, createdAt: db.sequelize.NOW, updatedAt: db.sequelize.NOW, ArtistID: 1},
       {name: "null", description: "Whether calling on the elemental forces of nature or emulating the creatures of the animal world, druids are an embodiment of nature's resilience, cunning, and fury. They claim no mastery over nature, but see themselves as extensions of nature's indomitable will.", image_url: "/img/heroes/placeholder-200x200.jpg", class: "Druid", health: "30", attack: "10", defense: "15", experience: "0", enabled: 1, createdAt: db.sequelize.NOW, updatedAt: db.sequelize.NOW, ArtistID: 1},
       {name: "null", description: "Far from the bustle of cities and towns, past the hedges that shelter the most distant farms from the terrors of the wild, amid the dense-packed trees of trackless forests and across wide and empty plains, rangers keep their unending watch.", image_url: "/img/heroes/placeholder-200x200.jpg", class: "Ranger", health: "30", attack: "10", defense: "15", experience: "0", enabled: 1, createdAt: db.sequelize.NOW, updatedAt: db.sequelize.NOW, ArtistID: 1},
       {name: "null", description: "Rogues rely on skill, stealth, and their foes' vulnerabilities to get the upper hand in any situation. They have a knack for finding the solution to just about any problem, demonstrating a resourcefulness and versatility that is the cornerstone of any successful adventuring party.", image_url: "/img/heroes/placeholder-200x200.jpg", class: "Rogue", health: "30", attack: "10", defense: "15", experience: "0", enabled: 1, createdAt: db.sequelize.NOW, updatedAt: db.sequelize.NOW, ArtistID: 1}
@@ -74,6 +74,7 @@ function Create_Game_log(){
     }
   ])
   .then((gameLogs) => { 
+    console.log("looping results");
     gameLogs.forEach(game => {
       console.log(game.dataValues);
     });
