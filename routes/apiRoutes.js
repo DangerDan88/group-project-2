@@ -46,25 +46,42 @@ module.exports = function(app) {
     }
   });
 
-  /*
-  // Get all examples
+// route to get all the heroes in database
   app.get("/api/heroes", function(req, res) {
     db.Heroes.findAll({}).then(function(dbHeroes) {
       res.json(dbHeroes);
     });
   });
-  // Create a new example
+  // post route for heroes to create one
   app.post("/api/heroes", function(req, res) {
     db.Heroes.create(req.body).then(function(dbHeroes) {
       res.json(dbHeroes);
     });
   });
-
-  // Delete an example by id
+// delete route for heroe by id 
   app.delete("/api/heroes/:id", function(req, res) {
     db.Heroes.destroy({ where: { id: req.params.id } }).then(function(dbHeroes) {
       res.json(dbHeroes);
     });
   }); 
-  */
+
+  app.get("/api/artist", function(req, res) {
+    db.Heroes.findAll({}).then(function(dbHeroes) {
+      res.json(dbHeroes);
+    });
+  });
+  // post route for heroes to create one
+  app.post("/api/artist", function(req, res) {
+    db.Heroes.create(req.body).then(function(dbHeroes) {
+      res.json(dbHeroes);
+    });
+  });
+// delete route for heroe by id 
+  app.delete("/api/artist/:id", function(req, res) {
+    db.Heroes.destroy({ where: { id: req.params.id } }).then(function(dbHeroes) {
+      res.json(dbHeroes);
+    });
+  }); 
+
+
 };

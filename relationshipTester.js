@@ -57,7 +57,7 @@ function Create_Heroes(run=true){
       console.log("Error while heroes creation: ", err)
     });
   }else{
-    Create_Game_log();
+    Create_Game_log(false);
   }
 }
 

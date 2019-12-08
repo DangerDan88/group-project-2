@@ -62,7 +62,8 @@ module.exports = function(app) {
     });
   });
 
-  // Challenge
+  // Challenge 
+
   app.get("/challenge", isAuthenticated, function(req, res) {
     res.render("challenge", {layout: 'sub', page_title: 'Challenge', logged_in: true, msg: "Challenge a Player!" });
   });
