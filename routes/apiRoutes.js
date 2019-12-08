@@ -101,8 +101,8 @@ module.exports = function(app) {
 
   // Create a new artist
   app.post("/api/artist", function(req, res) {
-    db.Artist.create(req.body).then(function(dbHeroes) {
-      res.json(dbHeroes);
+    db.Artist.create(req.body).then(function(dbArtist) {
+      res.json(dbArtist);
     });
   });
 
@@ -137,6 +137,55 @@ module.exports = function(app) {
    *   PUT /api/heroes/:id
    *   DELETE /api/heroes/:id
    */
+  // Get all Heroes
+  app.get("/api/heroes", function(req, res) {
+    db.Heroes.findAll({}).then(function(dbHeroes) {
+      res.json(dbHeroes);
+    });
+  });
+
+  // Get single heroes
+  app.get("/api/heroes/:id", function(req, res) {
+    db.Heroes.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbHeroes) {
+      console.log(dbHeroes);
+      res.json(dbHeroes);
+    });
+  });
+
+  // Create a new heroes
+  app.post("/api/heroes", function(req, res) {
+    db.Heroes.create(req.body).then(function(dbHeroes) {
+      res.json(dbHeroes);
+    });
+  });
+
+  // PUT route for updating heroes
+  app.put("/api/heroes/:id", function(req, res) {
+    db.Heroes.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbHeroes) {
+        res.json(dbHeroes);
+    });
+  });
+
+  // DELETE route for deleting heroes
+  app.delete("/api/heroes/:id", function(req, res) {
+    db.Heroes.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbHeroes) {
+      res.json(dbHeroes);
+    });
+  });
 
   /**
    * 4.1 Game_Logs joined with Game Stats
