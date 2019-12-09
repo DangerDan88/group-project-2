@@ -2,12 +2,13 @@
   <div class="container">
     <div class="row first-row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-         
+        <div class="flex flex-row justify-center text-base bg-gray-500 p-3 m-2 rounded">
+          <h1>{{msg}}</h1>
+        </div>
       </div>
     </div>
 
-    <div class="row" id="select-character">
+    <div class="row justify-center" id="select-character">
       {{#each all_heroes}}
         {{> heroes/heroes-card}}
       {{/each}}

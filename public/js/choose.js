@@ -1,87 +1,38 @@
 // Get references to page elements
-var $chooseBtn = $("#choose-btn");
+var $select_character_block = $("#select-character");
 
 // The API object contains methods for each kind of request we'll make
-var API = { 
-  saveExample: function(example) {
+var API = {
+  saveGameLog: function(log) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
+      url: "/api/gamelog", 
+      data: JSON.stringify(log)
     });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
-var handleChosen = function(){
+var refreshGame = function(){
   
 }
 
+var handleChosen = function(){
+  var game_log = {
+    "UserId": $("#logged_user").data("user_id"),
+    "heroesId": $(this).data("id"),
+    "createdAt":  Date.now(), 
+    "updatedAt":  Date.now()
+  };
+
+  console.log("Game Log", game_log); 
+
+  API.saveGameLog(game_log).then(function() {
+    refreshGame();
+  });
+}
+
 // Add event listeners to the choose this hero buttons
-$chooseBtn.on("click", handleChosen);
+$select_character_block.on("click", ".choose-btn", handleChosen);
