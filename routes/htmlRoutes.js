@@ -6,12 +6,31 @@ var path = require("path");
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
+function unpackArray(dataObject){
+
+  if(typeof (dataObject) == 'object'){
+    for(var property in dataObject){
+      if(dataObject.hasOwnProperty(property)){
+        try {
+          dataObject[property] = JSON.parse(dataObject[property]);
+        }catch(e){
+          continue;
+        }
+      }
+    }
+  }
+
+  return dataObject;
+}
+
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.Heroes.findAll({}).then(function(dbHeroes) {
+      dbHeroes = dbHeroes.filter(unpackArray);
+
       res.render("index", {
-        use_tailwind: true,
+        use_fullwidth: true,
         logged_in: false,
         msg: "Welcome! Prepare for Battle!",
         heroes: dbHeroes
@@ -27,7 +46,7 @@ module.exports = function(app) {
     res.render("login", {
       layout: 'sub', 
       page_title: 'Login', 
-      use_tailwind: false,
+      use_fullwidth: false,
       logged_in: false, 
       msg: "Login Form"
     });
@@ -42,7 +61,7 @@ module.exports = function(app) {
     res.render("register", {
       layout: 'sub', 
       page_title: 'Register', 
-      use_tailwind: false,
+      use_fullwidth: false,
       logged_in: false, 
       msg: "Sign Up Form"
     });
@@ -51,10 +70,12 @@ module.exports = function(app) {
   // Choose Hero
   app.get("/choose-hero", isAuthenticated, function(req, res) {
     db.Heroes.findAll({}).then(function(AllHeroes){
+      AllHeroes = AllHeroes.filter(unpackArray);
+
       res.render("choose-hero", {
         layout: 'sub', 
         page_title: 'Choose', 
-        use_tailwind: true,
+        use_fullwidth: true,
         logged_in: true, 
         msg: "CHOOSE A HERO!", 
         all_heroes: AllHeroes 
@@ -64,7 +85,13 @@ module.exports = function(app) {
 
   // Challenge
   app.get("/challenge", isAuthenticated, function(req, res) {
-    res.render("challenge", {layout: 'sub', page_title: 'Challenge', logged_in: true, msg: "Challenge a Player!" });
+    res.render("challenge", {
+      layout: 'sub', 
+      page_title: 'Challenge', 
+      use_fullwidth: true, 
+      logged_in: true, 
+      msg: "Challenge a Player!" 
+    });
   });
 
   // Game Play
@@ -72,7 +99,7 @@ module.exports = function(app) {
     res.render("play", {
       layout: 'sub', 
       page_title: 'Play', 
-      use_tailwind: false,
+      use_fullwidth: false,
       logged_in: true, 
       msg: "Fight!" 
     });
@@ -81,6 +108,7 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   app.get("/hero/:id", function(req, res) {
     db.Heroes.findOne({ where: { id: req.params.id } }).then(function(dbHero) {
+      dbHero = dbHero.filter(unpackArray);
       res.render("hero", {
         example: dbHero
       });
@@ -92,7 +120,7 @@ module.exports = function(app) {
     res.render("404", {
       layout: 'sub', 
       page_title: '404', 
-      use_tailwind: false,
+      use_fullwidth: true,
       logged_in: false 
     });
   });

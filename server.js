@@ -29,12 +29,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Handlebars
-app.engine(
-  "handlebars",
-  express_handlebars({
-    defaultLayout: "main"
-  })
-);
+var hbs = require('./helpers/handlebars.js')(express_handlebars);
+app.engine('handlebars', hbs.engine);
 app.set("view engine", "handlebars");
 
 // Routes

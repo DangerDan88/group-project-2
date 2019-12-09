@@ -46,11 +46,11 @@ function Create_Heroes(run=true){
         name: null, 
         description: "Fighters share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat. They are well acquainted with death, both meting it out and staring it defiantly in the face.", 
         image_url: JSON.stringify({
-          "idle":    "/img/heroes/druid/orc1_idle.gif",
-          "prepare": "/img/heroes/druid/orc1_prepare.gif",
-          "walk":    "/img/heroes/druid/orc1_walk.gif",
-          "attack":  "/img/heroes/druid/orc1_attack.gif",
-          "die":     "/img/heroes/druid/orc1_die.gif"
+          "idle":    "/img/heroes/fighter/warrior_idle.gif",
+          "prepare": "/img/heroes/fighter/warrior_prepare.gif",
+          "walk":    "/img/heroes/fighter/warrior_walk.gif",
+          "attack":  "/img/heroes/fighter/warrior_attack.gif",
+          "die":     "/img/heroes/fighter/warrior_die.gif"
         }), 
         class: "Fighter", 
         health: "30", 
@@ -79,17 +79,17 @@ function Create_Heroes(run=true){
         enabled: 1, 
         createdAt: db.sequelize.NOW, 
         updatedAt: db.sequelize.NOW, 
-        ArtistID: 1
+        ArtistId: 1
       },
       {
         name: null, 
         description: "Monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.", 
         image_url: JSON.stringify({
-          "idle":    "/img/heroes/cleric/cleric_idle.gif",
-          "prepare": "/img/heroes/cleric/cleric_prepare.gif",
-          "walk":    "/img/heroes/cleric/cleric_walk.gif",
-          "attack":  "/img/heroes/cleric/cleric_attack.gif",
-          "die":     "/img/heroes/cleric/cleric_die.gif"
+          "idle":    "/img/heroes/monk/cleric_idle.gif",
+          "prepare": "/img/heroes/monk/cleric_prepare.gif",
+          "walk":    "/img/heroes/monk/cleric_walk.gif",
+          "attack":  "/img/heroes/monk/cleric_attack.gif",
+          "die":     "/img/heroes/monk/cleric_die.gif"
         }),
         class: "Monk", 
         health: "30", 
@@ -99,7 +99,7 @@ function Create_Heroes(run=true){
         enabled: 1, 
         createdAt: db.sequelize.NOW, 
         updatedAt: db.sequelize.NOW, 
-        ArtistID: 1
+        ArtistId: 1
       },
       {
         name: null, 
@@ -119,7 +119,7 @@ function Create_Heroes(run=true){
         enabled: 1, 
         createdAt: db.sequelize.NOW, 
         updatedAt: db.sequelize.NOW, 
-        ArtistID: 1
+        ArtistId: 1
       },
       {
         name: null, 
@@ -139,7 +139,7 @@ function Create_Heroes(run=true){
         enabled: 1, 
         createdAt: db.sequelize.NOW, 
         updatedAt: db.sequelize.NOW, 
-        ArtistID: 1
+        ArtistId: 1
       },
       {
         name: null, 
@@ -159,7 +159,7 @@ function Create_Heroes(run=true){
         enabled: 1, 
         createdAt: db.sequelize.NOW, 
         updatedAt: db.sequelize.NOW, 
-        ArtistID: 1
+        ArtistId: 1
       }
     ])
     .then((newHeroes) => {

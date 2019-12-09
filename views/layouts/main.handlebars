@@ -17,11 +17,11 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 
-  {{#if use_tailwind}}
-  <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+  {{#if use_fullwidth}}
+    <link rel="stylesheet" href="/styles/styles.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/styles/max_width.css" media="screen" charset="utf-8">
   {{else}}
-  <link rel="stylesheet" href="/styles/main.css" media="screen" charset="utf-8">
-  <link rel="stylesheet" href="/styles/ccollins.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/styles/min_width.css" media="screen" charset="utf-8">
   {{/if}}
 </head>
 
