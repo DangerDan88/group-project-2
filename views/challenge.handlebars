@@ -3,8 +3,27 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        
+
         {{!-- Danger Dan Show users to challenge --}}
+
+          <div class="row justify-center" id="select-character">
+            {{#each all_heroes}}
+            {{> heroes/heroes-card}}
+            {{/each}}
+          </div>
+
+          <img src="../public/img/heroes/vs.png">
+
+          <div class="p-10">
+
+            <label class="block">
+              <span class="text-gray-700">Select A Challenger</span>
+              <select class="form-multiselect block w-full mt-1">
+                <option> {{email}} </option>
+              </select>
+            </label>
+
+          </div>
 
       </div>
     </div>
