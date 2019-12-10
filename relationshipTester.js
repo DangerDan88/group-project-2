@@ -187,6 +187,7 @@ function Create_Game_log(){
     }
   ])
   .then((gameLogs) => { 
+    console.log("looping results");
     gameLogs.forEach(game => {
       console.log(game.dataValues);
     });
