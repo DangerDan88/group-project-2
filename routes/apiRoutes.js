@@ -204,14 +204,26 @@ module.exports = function(app) {
         console.log(users);
         // For each user found set the sames gameLogs
         users.forEach(user => {
+<<<<<<< HEAD
           user.setGames(gameLogs) // gameLogs is an array (one user hasMany gameLogs)
           .then((joinedUsersgameLogs) => {
             console.log(JSON.stringify(joinedUsersgameLogs));
           })
           .catch((err) => console.log("Error while joining Users and gameLogs : ", err))
+=======
+          return user.setGames(gameLogs) // gameLogs is an array (one user hasMany gameLogs)
+          .then((joinedUsersgameLogs) => {
+            console.log(JSON.stringify(joinedUsersgameLogs));
+          })
+          //.catch((err) => console.log("Error while joining Users and gameLogs : ", err))
+>>>>>>> af446d7a8c1c3230fb90de05201125b9eac57526
         }); 
       })
       .catch((err) => console.log("Error while Users search : ", err))
     });
   });
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> af446d7a8c1c3230fb90de05201125b9eac57526

@@ -51,11 +51,18 @@ module.exports = function(app) {
   // Choose Hero
   app.get("/choose-hero", isAuthenticated, function(req, res) {
     db.Heroes.findAll({}).then(function(AllHeroes){
+      var user_data = { 
+        id: req.user.id, 
+        email: req.user.email,
+        user_groups: req.user.user_groups,
+      }
+
       res.render("choose-hero", {
         layout: 'sub', 
         page_title: 'Choose', 
         use_tailwind: true,
         logged_in: true, 
+        logged_user: user_data,
         msg: "CHOOSE A HERO!", 
         all_heroes: AllHeroes 
       });
@@ -63,7 +70,6 @@ module.exports = function(app) {
   });
 
   // Challenge 
-
   app.get("/challenge", isAuthenticated, function(req, res) {
     res.render("challenge", {layout: 'sub', page_title: 'Challenge', logged_in: true, msg: "Challenge a Player!" });
   });
