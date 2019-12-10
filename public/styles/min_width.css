@@ -87,11 +87,9 @@ article#main-container {
   margin-top: 0px; /* 40px; */ 
 }
 
-/** STICKY FOOTER
-* header 63px + margin 22px + footer 83px = 168px
-*/
+/** STICKY FOOTER **/
 #main-container.content-wrapper {
-  min-height: calc(100vh - 186px);
+  min-height: calc(100vh - 139px);
 }
 
 section#main-section {

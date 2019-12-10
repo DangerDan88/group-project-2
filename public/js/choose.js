@@ -64,4 +64,7 @@ var handleChosen = function(){
 
 // Add event listeners to the choose this hero buttons
 $select_character_block.on("click", ".choose-btn", handleChosen);
+<<<<<<< HEAD
 >>>>>>> af446d7a8c1c3230fb90de05201125b9eac57526
+=======
+>>>>>>> b41cdd463584a12d3eaef48ce49276a4afb69451
