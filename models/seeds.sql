@@ -2,12 +2,11 @@
 
 use game;
 -- Add Artist
-insert into artists (name, image_uris, createdAt, updatedAt) values ('admin','/img/artists/admin.png', now(), now());
+insert into artists (name, image_url, createdAt, updatedAt) values ('admin','/img/artists/admin.png', now(), now());
 
 -- Add Heroes
 insert into heroes (name, description, image_url, class, health, attack, defense, experience, enabled, createdAt, updatedAt, ArtistId)
 values 
-
 ("null", "Fighters share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat. They are well acquainted with death, both meting it out and staring it defiantly in the face.", "/img/heroes/placeholder-200x200.jpg", "Fighter", "30", "10", "15" ,"0", 1, now(), now(), "1"),
 ("null", "Wizards are supreme magic-users, defined and united as a class by the spells they cast. Drawing on the subtle weave of magic that permeates the cosmos, wizards cast spells of explosive fire, arcing lightning, subtle deception, brute-force mind control, and much more.", "/img/heroes/placeholder-200x200.jpg","Wizard", "30", "10", "15", "0", 1, now(), now(), 1),
 ("null", "Monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.", "/img/heroes/placeholder-200x200.jpg", "Monk", "30", "10", "15", "0", 1, now(), now(), 1),

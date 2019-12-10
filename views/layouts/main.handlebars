@@ -17,11 +17,11 @@
   <!-- CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 
-  {{#if use_tailwind}}
-    <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
+  {{#if use_fullwidth}}
+    <link rel="stylesheet" href="/styles/styles.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/styles/max_width.css" media="screen" charset="utf-8">
   {{else}}
-    <link rel="stylesheet" href="/styles/main.css" media="screen" charset="utf-8">
-    <link rel="stylesheet" href="/styles/ccollins.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="/styles/min_width.css" media="screen" charset="utf-8">
   {{/if}}
 </head>
 
@@ -36,11 +36,12 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             {{#if logged_in}}
-            <li class="nav-item">
+            <li class="nav-item" id="logged_user" data-user_id="{{logged_user.id}}"
+              data-user_email="{{logged_user.email}}" data-user_groups="{{logged_user.user_groups}}">
               <a class="nav-link" href="/logout"><i class="fas fa-user-slash" title="Logout"></i></a>
             </li>
             {{else}}
-            <li class="nav-item">
+            <li class="nav-item" id="logged_user" data-user_id="0" data-user_email="0" data-user_groups="0">
               <a class="nav-link" href="/register"><i class="fas fa-user" title="Register"></i></a>
             </li>
             {{/if}}

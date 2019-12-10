@@ -4,9 +4,9 @@ module.exports = function(sequelize, DataTypes) {
     image_url: DataTypes.TEXT,
   });
 
-  Artist.associate = function(models){
+  Artist.associate = function(models){ 
     Artist.belongsTo(models.User, { foreignKey: { allowNull: false }});
-    Artist.hasMany(models.Heroes, { onDelete: "cascade" });
+    // Artist.hasMany(models.Heroes, { onDelete: "cascade" }); 
     // Artist.hasMany(models.Heroes, { foreignKey: { allowNull: false }});
   };
 
