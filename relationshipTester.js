@@ -83,7 +83,7 @@ function Create_Heroes(run=true){
       },
       {
         name: null, 
-        description: "Monks are united in their ability to magically harness the energy that flows in their bodies. Whether channeled as a striking display of combat prowess or a subtler focus of defensive ability and speed, this energy infuses all that a monk does.", 
+        description: "Clerics are intermediaries between the mortal world and the distant planes of the gods. As varied as the gods they serve, clerics strive to embody the handiwork of their deities. No ordinary priest, a cleric is imbued with divine magic.", 
         image_url: JSON.stringify({
           "idle":    "/img/heroes/monk/cleric_idle.gif",
           "prepare": "/img/heroes/monk/cleric_prepare.gif",
@@ -91,7 +91,7 @@ function Create_Heroes(run=true){
           "attack":  "/img/heroes/monk/cleric_attack.gif",
           "die":     "/img/heroes/monk/cleric_die.gif"
         }),
-        class: "Monk", 
+        class: "Cleric", 
         health: "30", 
         attack: "10", 
         defense: "15", 
