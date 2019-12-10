@@ -73,6 +73,18 @@ module.exports = function(app) {
     }
   });
 
+  app.get("/api/all_user_data", function(req, res) {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+    } else {
+
+      db.User.findAll({attributes: ['id', 'email']}).then(function(dbUsers) {
+        res.json(dbUsers);
+      });
+    }
+  });
+
   /**
    * 2.1 Artist API
    *   GET /api/artist, /api/artist/:id
