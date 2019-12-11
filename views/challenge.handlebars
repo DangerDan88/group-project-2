@@ -5,18 +5,20 @@
         <h1>{{msg}}</h1>
         
         <div class="row justify-center" id="select-character">
-          {{#each all_heroes}}
+          {{!-- {{#each my_hero}}
           {{> heroes/heroes-card}}
-          {{/each}}
+          {{/each}} --}}
+          <img src="/img/vs.png" width="50">
         </div>
 
-        <img src="/img/vs.png">
 
         <div class="p-10">
           <label class="block">
             <span class="text-gray-700">Select A Challenger</span>
             <select class="form-multiselect block w-full mt-1">
-              <option> {{email}} </option>
+              {{#each players}}
+                <option val={{id}}>{{email}}</option>
+              {{/each}}
             </select>
           </label>
         </div>

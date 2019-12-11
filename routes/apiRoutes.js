@@ -201,29 +201,111 @@ module.exports = function(app) {
 
   /**
    * 4.1 Game_Logs joined with Game Stats
-   *   GET /api/gamelog/:id
+   *   GET /api/gamelog/:id, /api/gamestats, /api/gamestats/:userid
    *   POST /api/gamelog/ and update game_stats
-   *   PUT /api/gamelog/:id and update game_stats
-   *   DELETE /api/gamelog/:id and auto delete game_stats 
+   * NOTE: we don't need a PUT to Update game logs because we're always going to be posting new ones.
+   * Same for a delete. Eventually we might need a function to clean up old data. 
    */
-   // Create a new game_log
-   app.post("/api/gamelog", function(req, res) {
+  // GET /api/gamelog/:id
+  app.get("/api/gamelog/:id", function(req, res){
+    db.Game_log.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(log){
+      console.log(log);
+      res.json(log);
+    });
+  });
+
+  // Get my current game stats
+  app.get("/api/gamestats", function(req, res){
+    if(!req.user){
+      // If the user is not logged in then send back an empty object
+      res.json({});
+    }else{
+      db.Game_stats.findOne({
+        attributes: ['Game_logId'],
+        where: {
+          UserId: req.user.id
+        }
+      }).then(function(dbGameStats){
+        console.log("Get game log id: ", dbGameStats.Game_logId);
+        db.Game_log.findOne({
+          where: {
+            id: dbGameStats.Game_logId
+          }
+        }).then(function(UserGameLog){
+          console.log("Last opponent id: ", UserGameLog.last_opponentId);
+          if(UserGameLog.last_opponentId === null || typeof UserGameLog.last_opponentId !== "number"){
+            res.json(UserGameLog);
+          }else{ // getting opponent game stats UserGameLog.last_opponentId
+            db.Game_stats.findOne({
+              attributes: ['Game_logId'],
+              where: {
+                UserId: UserGameLog.last_opponentId,
+              }
+            }).then(function(OpponentGameStats){
+              db.Game_log.findOne({
+                where: {
+                  id: OpponentGameStats.Game_logId
+                }
+              }).then(function(OpponentGameLog){
+                UserGameLog.dataValues.enemy_heroesId = OpponentGameLog.heroesId;
+                UserGameLog.dataValues.enemy_current_hp = OpponentGameLog.current_hp;
+                UserGameLog.dataValues.enemy_hero_exp = OpponentGameLog.hero_exp;
+                UserGameLog.dataValues.enemy_hero_level = OpponentGameLog.hero_level;
+                UserGameLog.dataValues.enemy_wins = OpponentGameLog.wins;
+                UserGameLog.dataValues.enemy_losses = OpponentGameLog.losses;
+                UserGameLog.dataValues.enemy_last_opponentId = OpponentGameLog.last_opponentId;
+                UserGameLog.dataValues.enemy_in_game = OpponentGameLog.in_game;
+                UserGameLog.dataValues.enemy_turn = OpponentGameLog.my_turn;
+                console.log(UserGameLog);
+                res.json(UserGameLog);
+              });
+            })
+          }
+        });
+      });
+    }  
+  });
+
+  // Get a users current game stats
+  app.get("/api/gamestats/:userid", function(req, res){
+    db.Game_stats.findOne({
+      attributes: ['Game_logId'],
+      where: {
+        UserId: req.params.userid
+      }
+    }).then(function(dbGameStats){
+      console.log("Get game log id: ", dbGameStats.Game_logId);
+      db.Game_log.findOne({
+        where: {
+          id: dbGameStats.Game_logId
+        }
+      }).then(function(UserGameLog){
+        res.json(UserGameLog);
+      });
+    }); 
+  });
+
+  // Create a new game_log
+  app.post("/api/gamelog", function(req, res) {
     db.Game_log.create(req.body).then(function(gameLogs) {
       console.log(gameLogs.dataValues);
 
       db.User.findAll({where: {id: gameLogs.dataValues.UserId}, include: ['games']})
-      .then((users) => {
+      .then(function(users) {
         console.log(users);
         // For each user found set the sames gameLogs
-        users.forEach(user => {
-          return user.setGames(gameLogs) // gameLogs is an array (one user hasMany gameLogs)
-          .then((joinedUsersgameLogs) => {
+        users.forEach(function(user){
+          user.setGames(gameLogs) // gameLogs is an array (one user hasMany gameLogs)
+          .then(function(joinedUsersgameLogs) {
             console.log(JSON.stringify(joinedUsersgameLogs));
-          })
-          //.catch((err) => console.log("Error while joining Users and gameLogs : ", err))
+            res.json(joinedUsersgameLogs);
+          }).catch(function(err){ console.log("Error while joining Users and gameLogs : ", err)} );
         }); 
-      })
-      .catch((err) => console.log("Error while Users search : ", err))
+      }).catch(function(err){ console.log("Error while Users search : ", err)});
     });
   });
 };

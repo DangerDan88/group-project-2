@@ -16,13 +16,15 @@ var API = {
 };
 
 var refreshGame = function(){
-  
-}
+  location.reload();
+};
 
 var handleChosen = function(){
   var game_log = {
     "UserId": $("#logged_user").data("user_id"),
     "heroesId": $(this).data("id"),
+    "current_hp": $(this).data("health"),
+    "hero_exp": $(this).data("experience"),
     "createdAt":  Date.now(), 
     "updatedAt":  Date.now()
   };
@@ -32,7 +34,7 @@ var handleChosen = function(){
   API.saveGameLog(game_log).then(function() {
     refreshGame();
   });
-}
+};
 
 // Add event listeners to the choose this hero buttons
 $select_character_block.on("click", ".choose-btn", handleChosen);

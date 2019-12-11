@@ -1,7 +1,7 @@
 <div
   class="flex flex-col max-w-xs lg:mx-auto rounded overflow-hidden shadow-lg m-1 items-center justify-between bg-gray-500 pt-4">
   {{#ifObject image_url}}
-    {{#withItem image_url key='idle'}}
+    {{#withItem image_url key='idle' }} 
       <img class="w-1/2" src="{{this}}" alt="placeholder">
     {{/withItem}}
   {{else}}
@@ -21,7 +21,7 @@
   </div>
 
   <div class="m-2">
-    <button class="bg-teal-800 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded choose-btn" data-id="{{id}}">
+    <button class="bg-teal-800 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded choose-btn" data-id="{{id}}" data-class="{{class}}" data-health="{{health}}" data-attack="{{attack}}" data-experience="{{experience}}" data-enabled="{{enabled}}">
       Choose This Hero
     </button>
   </div>

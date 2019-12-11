@@ -36,8 +36,8 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ml-auto">
             {{#if logged_in}}
-            <li class="nav-item" id="logged_user" data-user_id="{{logged_user.id}}"
-              data-user_email="{{logged_user.email}}" data-user_groups="{{logged_user.user_groups}}">
+            <li class="nav-item" id="logged_user" data-user_id="{{logged_user_id}}"
+              data-user_email="{{logged_user_email}}" data-user_groups="{{logged_user_groups}}">
               <a class="nav-link" href="/logout"><i class="fas fa-user-slash" title="Logout"></i></a>
             </li>
             {{else}}

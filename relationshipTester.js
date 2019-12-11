@@ -179,8 +179,8 @@ function Create_Game_log(){
   db.Game_log.bulkCreate([
     {
       UserId: 1,
-      heroesId: 1,
-      current_hp: 23,
+      heroesId: 2,
+      current_hp: 20,
       hero_exp: 0,
       createdAt: db.sequelize.NOW, 
       updatedAt: db.sequelize.NOW
